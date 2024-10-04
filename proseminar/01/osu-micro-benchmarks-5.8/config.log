@@ -27,7 +27,7 @@ uname -v = #1 SMP Tue Aug 8 21:30:09 UTC 2023
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH: /usr/site/hpc/spack/v0.19-lcc3-20230919/opt/spack/linux-rocky8-westmere/gcc-12.2.0/openmpi-4.1.4-6gebvs6w4b7gkf4pwu7upa3m6bewbuyt/bin
+PATH: /usr/site/hpc/spack/v0.19-lcc3-20230919/opt/spack/linux-rocky8-westmere/gcc-12.2.0/openmpi-3.1.6-d2gmn55g7hoinwfuk2lc3ibz6odzujak/bin
 PATH: /home/cb76/cb761034/.local/bin
 PATH: /home/cb76/cb761034/bin
 PATH: /usr/slurm/bin
@@ -511,7 +511,7 @@ conftest.c:30:6: warning: conflicting types for built-in function 'sqrt'; expect
       |      ^~~~
 conftest.c:1:1: note: 'sqrt' is declared in header '<math.h>'
     1 | /* confdefs.h */
-/usr/bin/ld: /tmp/ccnXJUUe.o: undefined reference to symbol 'sqrt@@GLIBC_2.2.5'
+/usr/bin/ld: /tmp/ccgvJCbu.o: undefined reference to symbol 'sqrt@@GLIBC_2.2.5'
 //usr/lib64/libm.so.6: error adding symbols: DSO missing from command line
 collect2: error: ld returned 1 exit status
 configure:15795: $? = 1
@@ -631,7 +631,7 @@ configure:16042: $? = 0
 configure:16042: result: yes
 configure:16047: checking for shmem_barrier_all
 configure:16047: mpicc -o conftest -g -O2   conftest.c -lm  >&5
-/tmp/ccM4irv8.o: In function `main':
+/tmp/ccg4TUOI.o: In function `main':
 /scratch/cb761034/hpc/proseminar/01/osu-micro-benchmarks-5.8/conftest.c:65: undefined reference to `shmem_barrier_all'
 collect2: error: ld returned 1 exit status
 configure:16047: $? = 1
@@ -707,7 +707,7 @@ configure: failed program was:
 configure:16047: result: no
 configure:16052: checking for upc_memput
 configure:16052: mpicc -o conftest -g -O2   conftest.c -lm  >&5
-/tmp/cc5wIKaS.o: In function `main':
+/tmp/ccJKuuR4.o: In function `main':
 /scratch/cb761034/hpc/proseminar/01/osu-micro-benchmarks-5.8/conftest.c:65: undefined reference to `upc_memput'
 collect2: error: ld returned 1 exit status
 configure:16052: $? = 1
@@ -838,7 +838,7 @@ configure: failed program was:
 configure:16057: result: no
 configure:16063: checking for shmem_finalize
 configure:16063: mpicc -o conftest -g -O2   conftest.c -lm  >&5
-/tmp/ccnI2XVM.o: In function `main':
+/tmp/ccv2gBso.o: In function `main':
 /scratch/cb761034/hpc/proseminar/01/osu-micro-benchmarks-5.8/conftest.c:65: undefined reference to `shmem_finalize'
 collect2: error: ld returned 1 exit status
 configure:16063: $? = 1

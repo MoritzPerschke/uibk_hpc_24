@@ -10,4 +10,4 @@
 #SBATCH --ntasks=2
 
 module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
-mpiexec --map-by node ../osu_bw
+mpiexec --report-bindings --map-by node -n 2 ../osu_bw

@@ -18,14 +18,29 @@ def read_data_df(dir):
 
 cl = read_data_df('./cores/latency')
 sl = read_data_df('./sockets/latency/')
-# nl = read_data_df('./nodes/latency/')
+nl = read_data_df('./nodes/latency/')
 
 cb = read_data_df('./cores/bandwidth')
 sb = read_data_df('./sockets/bandwidth/')
 nb = read_data_df('./nodes/bandwidth/')
 
-fig, axs = plt.subplots(ncols=3, nrows=2, figsize=(15,5))
+fig, axs = plt.subplots(ncols=3, nrows=2, figsize=(12,5))
 
-cl.plot(ax=axs[0][0])
+# axs[0].set_xticks(range(len(bw.index)))
+# axs[0].set_xticklabels(bw.index, rotation=45)
+cl.plot(ax=axs[0][0], legend=False)
+axs[0][0].set_title('Cores')
+axs[0][0].set_ylabel('Latency')
 
-plt.show()
+sl.plot(ax=axs[0][1], legend=False)
+axs[0][1].set_title('Sockets')
+
+nl.plot(ax=axs[0][2], legend=False)
+axs[0][2].set_title('Nodes')
+
+cb.plot(ax=axs[1][0], legend=False)
+axs[1][0].set_ylabel('Bandwidth')
+sb.plot(ax=axs[1][1], legend=False)
+nb.plot(ax=axs[1][2], legend=False)
+
+plt.savefig('consistency.jpg')

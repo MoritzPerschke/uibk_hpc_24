@@ -122,4 +122,4 @@ This example also shows that the calls are not happening one after the other qui
 
 
 ## Exercise 2
-
+![Results of osu_bw and osu_latency respectively](./task01/plot.jpg)

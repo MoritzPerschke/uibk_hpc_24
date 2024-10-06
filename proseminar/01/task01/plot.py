@@ -12,7 +12,7 @@ def read_data_df(file):
 bw = read_data_df('./bandwidth.log')
 lat = read_data_df('./latency.log')
 
-fig, axs = plt.subplots(ncols=2, nrows=1, figsize=(15,5))
+fig, axs = plt.subplots(ncols=2, nrows=1, figsize=(13,6))
 
 bw.plot(ax=axs[0], legend=False, grid=True)
 lat.plot(ax=axs[1], legend=False, grid=True)
@@ -21,9 +21,13 @@ lat.plot(ax=axs[1], legend=False, grid=True)
 axs[0].set_title('Bandwidth (MB/s)')
 axs[0].set_xticks(range(len(bw.index)))
 axs[0].set_xticklabels(bw.index, rotation=45)
+axs[0].set_xlabel('MB/s')
+axs[0].set_ylabel('Size')
 
 axs[1].set_title('Latency (us)')
 axs[1].set_xticks(range(len(lat.index)))
 axs[1].set_xticklabels(lat.index, rotation=45)
+axs[0].set_xlabel('us')
+axs[0].set_ylabel('Size')
 
 plt.savefig('plot.jpg')

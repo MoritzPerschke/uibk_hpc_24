@@ -122,4 +122,53 @@ This example also shows that the calls are not happening one after the other qui
 
 
 ## Exercise 2
+When I started this exercise, some people had already entered values into the spreadsheet.
+At first I used the script above to run the benchmarks, but my times were off by a noticable margin compared to even the highest in the spreadsheet.
+I then played around with parameters and asked ChatGPT some things that I didn't understand.
+After a while I realized that instead of using `sbatch` flags I could use `mpiexec` flags, wich in combination a more current gcc produced satisfying results.
+
 ![Results of osu_bw and osu_latency respectively](./task01/plot.jpg)
+
+The used script looks like this:
+```
+#!/bin/bash
+
+#SBATCH --partition=lva
+#SBATCH --job-name osu_benchmark
+#SBATCH --exclusive
+#SBATCH --error=errors/cores.log
+#SBATCH --output=bandwidth/cores.log
+#SBATCH --ntasks=2
+
+module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
+mpiexec -n $SLURM_NTASKS ./osu_bw
+```
+
+In order to run the benchmarks on different cores, sockets or nodes, the `--map-by <unit>` can be used.
+
+```
+#!/bin/bash
+
+#SBATCH --partition=lva
+#SBATCH --job-name osu_benchmark
+#SBATCH --exclusive
+#SBATCH --error=errors/nodes.log
+#SBATCH --output=bandwidth/nodes.log
+#SBATCH --ntasks=2
+
+module load openmpi/3.1.6-gcc-12.2.0-d2gmn55
+mpiexec --report-bindings --map-by node -n 2 ../osu_bw
+```
+
+To verify the correct placement, the `--report-bindings` option is used, which causes the bindings to be written to stderr.
+
+![Comparison of Benchmarks across cores, sockets and nodes](./task02/plot.jpg)
+
+I am not quite sure why the latency between sockets should be lower for a large packetsize.
+I assume this is a problem with my benchmark and is not representative of the actual latency.
+
+To measure the consistency of these measurements, I submitted the same job ten times.
+
+![The results of the 10 benchmarks](./task03/consistency.jpg)
+
+Judging by the graph, these measurements appear quite stable

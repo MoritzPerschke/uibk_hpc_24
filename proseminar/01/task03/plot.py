@@ -24,19 +24,22 @@ cb = read_data_df('./cores/bandwidth')
 sb = read_data_df('./sockets/bandwidth/')
 nb = read_data_df('./nodes/bandwidth/')
 
-fig, axs = plt.subplots(ncols=3, nrows=2, figsize=(12,5))
+fig, axs = plt.subplots(ncols=3, nrows=2, figsize=(11,5))
 
 # axs[0].set_xticks(range(len(bw.index)))
 # axs[0].set_xticklabels(bw.index, rotation=45)
 cl.plot(ax=axs[0][0], legend=False)
 axs[0][0].set_title('Cores')
 axs[0][0].set_ylabel('Latency')
+axs[0][0].set_ylim(top=int(nl.max().max())+10)
 
 sl.plot(ax=axs[0][1], legend=False)
 axs[0][1].set_title('Sockets')
+axs[0][1].set_ylim(top=int(nl.max().max())+10)
 
 nl.plot(ax=axs[0][2], legend=False)
 axs[0][2].set_title('Nodes')
+axs[0][2].set_ylim(top=int(nl.max().max())+10)
 
 cb.plot(ax=axs[1][0], legend=False)
 axs[1][0].set_ylabel('Bandwidth')

@@ -1,0 +1,3 @@
+[submodule "shared"]
+	path = shared
+	url = git@git.uibk.ac.at:c7031375/hpc24.git
